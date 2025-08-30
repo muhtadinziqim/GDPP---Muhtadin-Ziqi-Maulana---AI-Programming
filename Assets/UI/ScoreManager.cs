@@ -12,7 +12,10 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         _score = 0;
-        _maxScore = 0;
+        if (_scoreText == null)
+        {
+            _maxScore = 0;
+        }
         UpdateUI();
     }
 
