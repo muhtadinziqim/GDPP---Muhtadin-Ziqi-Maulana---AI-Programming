@@ -22,6 +22,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     public Player Player;
 
+    [SerializeField]
+    private Transform _respawnPoint;
+
     // [HideInInspector]
     public Animator Animator;
 
@@ -70,7 +73,8 @@ public class Enemy : MonoBehaviour
 
     public void Dead()
     {
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        transform.position = _respawnPoint.position;
     }
 
     private void OnCollisionEnter(Collision collision)
