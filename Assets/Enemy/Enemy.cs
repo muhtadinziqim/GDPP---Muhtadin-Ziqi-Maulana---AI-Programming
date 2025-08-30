@@ -17,6 +17,11 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public UnityEngine.AI.NavMeshAgent NavMeshAgent;
 
+    [SerializeField]
+    public float ChaseDistance;
+    [SerializeField]
+    public Player Player;
+
     private void Awake()
     {
         _currentState = PatrolState;
@@ -32,5 +37,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void SwitchState(BaseState state)
+    {
+        _currentState.ExitState(this);
+        _currentState = state;
+        _currentState.EnterState(this);
+    }
 
 }
