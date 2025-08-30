@@ -15,7 +15,7 @@ public class Pickable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(OnPicked != null)
+            if (OnPicked != null)
             {
                 OnPicked(this);
             }

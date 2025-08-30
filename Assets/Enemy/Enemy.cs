@@ -29,6 +29,16 @@ public class Enemy : MonoBehaviour
         NavMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        if (Player != null)
+        {
+            Player.OnPowerUpStart += StartRetreating;
+            Player.OnPowerUpStop += StopRetreating;
+        }
+    }
+
+
     private void Update()
     {
         if (_currentState != null)
@@ -43,5 +53,16 @@ public class Enemy : MonoBehaviour
         _currentState = state;
         _currentState.EnterState(this);
     }
+
+    private void StartRetreating()
+    {
+        SwitchState(RetreatState);
+    }
+
+    private void StopRetreating()
+    {
+        SwitchState(PatrolState);
+    }
+
 
 }

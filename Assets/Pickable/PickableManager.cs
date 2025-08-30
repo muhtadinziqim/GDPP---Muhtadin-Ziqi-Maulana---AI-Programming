@@ -6,7 +6,8 @@ public class PickableManager : MonoBehaviour
 {
     private List<Pickable> _pickableList = new List<Pickable>();
 
-
+    [SerializeField]
+    private Player _player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -21,7 +22,7 @@ public class PickableManager : MonoBehaviour
             _pickableList.Add(pickableObjects[i]);
             pickableObjects[i].OnPicked += OnPickablePicked;
         }
-        Debug.Log("Pickable List: "+_pickableList.Count);
+        Debug.Log("Pickable List: " + _pickableList.Count);
     }
 
     private void OnPickablePicked(Pickable pickable)
@@ -33,12 +34,18 @@ public class PickableManager : MonoBehaviour
         {
             Debug.Log("Win");
         }
+
+        if (pickable.PickableType == PickableType.PowerUp)
+        {
+            _player?.PickPowerUp();
+        }
+
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
