@@ -7585,6 +7585,7 @@ MonoBehaviour:
   _powerupDuration: 5
   _respawnPoint: {fileID: 342855856}
   _health: 3
+  _healthText: {fileID: 1325000619}
 --- !u!54 &961164817
 Rigidbody:
   m_ObjectHideFlags: 0
